@@ -128,7 +128,7 @@
     :continues '((new 'static 'continue-point
         :name "village1-hut"
         :level 'village1
-        :trans (new 'static 'vector :x -638860.06 :y 139319.7 :z 769990.6 :w 1.0)
+        :trans (new 'static 'vector :x -638860.06 :y (meters 116.96) :z 769990.6 :w 1.0)
         :quat (new 'static 'quaternion :y -0.9889 :w -0.148)
         :camera-trans (new 'static 'vector :x -668114.1 :y 164536.31 :z 828633.06 :w 1.0)
         :camera-rot (new 'static 'array float 9 -0.8947 0.0 -0.4464 0.1082 0.9701 -0.2169 0.4331 -0.2424 -0.868)

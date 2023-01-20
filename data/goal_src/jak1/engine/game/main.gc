@@ -97,10 +97,30 @@
           )
   )
 
+(defun spawn-custom-actors ()
+;;function to spawn custom actors
+(birth-pickup-at-point (new 'static 'vector :x (meters -139.31) :y (meters 33.43) :z (meters 182.29)  :w 1.0) (pickup-type eco-pink) 1.0 #f *target* (the-as fact-info #f))
+(birth-pickup-at-point (new 'static 'vector :x (meters -150.31) :y (meters 33.43) :z (meters 182.29)  :w 1.0) (pickup-type eco-blue) 1.0 #f *target* (the-as fact-info #f))
+(birth-pickup-at-point (new 'static 'vector :x (meters -135.11) :y (meters 33.43) :z (meters 187.34)  :w 1.0) (pickup-type eco-green) 1.0 #f *target* (the-as fact-info #f))
+(birth-pickup-at-point (new 'static 'vector :x (meters -147.14) :y (meters 33.43) :z (meters 191.57)  :w 1.0) (pickup-type eco-yellow) 1.0 #f *target* (the-as fact-info #f))
+(birth-pickup-at-point (new 'static 'vector :x (meters -154.95) :y (meters 33.43) :z (meters 181.93)  :w 1.0) (pickup-type eco-red) 1.0 #f *target* (the-as fact-info #f))
+(birth-pickup-at-point (new 'static 'vector :x (meters -128.17) :y (meters 33.43) :z (meters 182.5)  :w 1.0) (pickup-type eco-pill) 1.0 #f *target* (the-as fact-info #f))
+(birth-pickup-at-point (new 'static 'vector :x (meters -155.90) :y (meters 35.43) :z (meters 190.31)  :w 1.0) (pickup-type fuel-cell) 1.0 #f *target* (the-as fact-info #f))
+(birth-pickup-at-point (new 'static 'vector :x (meters -170.36) :y (meters 33.43) :z (meters 182.27)  :w 1.0) (pickup-type money) 1.0 #f *target* (the-as fact-info #f))
+(none)
+)
+
+(define spawn-eco #t)
 (defun movie? ()
   "Are we in a movie?"
-  (logtest? (-> *kernel-context* prevent-from-run) (process-mask movie))
-  )
+ ;;Gross hack to spawn actors only once
+(if (and (= (-> *target* root trans y) (meters 116.96)) spawn-eco )
+(begin
+(spawn-custom-actors)
+(set! spawn-eco #f)
+)
+)
+ (logtest? (-> *kernel-context* prevent-from-run) (process-mask movie)))
 
 (defun set-master-mode ((new-mode symbol))
   "Update pause masks for the given mode, and set *master-mode*"
